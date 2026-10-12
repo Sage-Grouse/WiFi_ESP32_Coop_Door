@@ -1,13 +1,17 @@
 # ESP32 Automated Chicken Coop Door Controller
 
-WiFi-enabled automated chicken coop door controller built on the ESP32. This project features a custom web interface, allowing you to control the door manually or set it to run automatically using either an environmental light sensor (photoresistor) or NTP-synchronized clock times. It utilizes an edge-trigger state machine and non-volatile flash memory to ensure the door never loses its state, even during power outages.
+WiFi-enabled automated chicken coop door controller built on the ESP32. This project features a custom web interface, allowing you to control the door manually or set it to run automatically using either an environmental light sensor (photoresistor) or NTP-synchronized clock times with no app to install. It utilizes an edge-trigger state machine and non-volatile flash memory to ensure the door never loses its state, even during power outages. Inspired by [ESP32 COOP DOOR](https://github.com/ESP32-COOP).
+
+![Coop Door Opener 1](images/ESP32_Coop_Door1.jpg)
+
+![Coop Door Opener 2](images/ESP32_Coop_Door2.jpg)
 
 ## Key Features
 
 * **Dual Auto Modes:** Trigger the door using ambient light thresholds or specific times of day (synced via NTP).
 
 
-* **Web Dashboard:** Accessible via `[http://coop.local](http://coop.local)` to view live status, open/close the door, and adjust settings without rewriting code.
+* **Web Dashboard:** Accessible via `[http://coop.local](http://coop.local)` to view live status, open/close the door, and adjust settings without rewriting code. Note: only available on your local network, not while you're away from the farm.
 
 
 * **Power-Resilient Memory:** Saves physical door position and cycle states to the ESP32's flash memory. Recovers perfectly after power failures.
@@ -18,6 +22,7 @@ WiFi-enabled automated chicken coop door controller built on the ESP32. This pro
 
 * **Web-Based Calibration:** Adjust stepper motor revolutions dynamically through the UI.
 
+![Coop Door Website](images/ESP32_Coop_Door_web_1.PNG)
 
 
 ## Hardware Requirements
@@ -25,7 +30,7 @@ WiFi-enabled automated chicken coop door controller built on the ESP32. This pro
 * **Microcontroller:** DOIT ESP32 DEVKIT V1 ([AITRIP ESP-WROOM-32 Development Board 2.4GHz Dual-Mode WiFi + Bluetooth Dual Cores Microcontroller Processor Integrated with Antenna RF AMP Filter AP STA](https://a.co/d/0fGKghaw))
 
 
-* **Motor:** [28BYJ-48 Stepper Motor with ULN2003 Driver Board](https://a.co/d/08mGWwND)
+* **Motor:** [28BYJ-48 Stepper Motor with ULN2003 Driver Board](https://a.co/d/08mGWwND) (attach to box by deforming printed studs with heat, I used a soldering iron on a low setting), 2- 3Mx4 screws for ULN2003 Driver
 
 
 * **Power:** [12V Power Supply](https://a.co/d/0hwFqWwe) & [MP1584EN Buck Converter](https://a.co/d/0iDOPItW) (can take 5v-28v input) via [5.5mm x 2.1mm socket](https://a.co/d/0gPqByIp)
@@ -39,7 +44,7 @@ WiFi-enabled automated chicken coop door controller built on the ESP32. This pro
 
 * **3D Print:** [Enclosure (add screw holes to bottom or top as desired), Spool, and Photoresistor holder](https://www.thingiverse.com/thing:7421323).
 
-* **Other:** Kite string, License Plates (pop-riveted together) for door, [1/4" aluminum trim channel](https://www.homedepot.com/p/Everbilt-1-4-in-Wide-Inside-x-4-ft-Aluminum-Trim-Channel-Metal-Stock-6530/340452574) for the door to slide in
+* **Other:** Kite string, License Plates (pop-riveted together) for door, [1/4" aluminum trim channel](https://www.homedepot.com/p/Everbilt-1-4-in-Wide-Inside-x-4-ft-Aluminum-Trim-Channel-Metal-Stock-6530/340452574) for the door to slide in, [Prototype Boards and Headder Connections](https://a.co/d/074FiDg6), 2- 2Mx4 screws for Prototype Board
 
 
 
@@ -47,7 +52,7 @@ WiFi-enabled automated chicken coop door controller built on the ESP32. This pro
 
 This project uses a "Star Power" topology to safely step down a 12V battery/supply to a stable 5V for the logic board and motor driver, protecting the ESP32 from voltage spikes.
 
-![Wiring Diagram](ESP32 Motor Control-2026-10-06-224538.jpg)
+![Coop Door Schematic](images/ESP32 Motor Control.png)
 
 ### Pin Mapping
 
@@ -79,7 +84,7 @@ This project uses a "Star Power" topology to safely step down a 12V battery/supp
 
 1. **IDE Preparation:** Install the Arduino IDE.
 2. **ESP32 Core:** Add the ESP32 board manager URL and install **esp32 by Espressif Systems**.
-* *Critical Note:* This specific board requires **v2.0.17** of the ESP32 core. Newer versions (v3.0.0+) may cause compatibility issues with certain libraries. Select "DOIT ESP32 DEVKIT V1" as your board. Other boards may require a different version from the Board Manager.
+* *Critical Note:* This specific ESP32 board requires **v2.0.17** of the ESP32 core. Newer versions (v3.0.0+) may cause compatibility issues with certain libraries. Select "DOIT ESP32 DEVKIT V1" as your board. Other boards may require a different version from the Board Manager.
 
 
 

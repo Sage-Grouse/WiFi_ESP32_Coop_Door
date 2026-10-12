@@ -1,0 +1,33 @@
+# Arduino Build Artifacts
+build/
+*.bin
+*.elf
+*.hex
+*.map
+*.partitions.bin
+
+# PlatformIO / VSCode Environment Files (if used later)
+.pio/
+.vscode/
+
+# macOS Generated Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows Generated Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+#Other files
+*.mmd
+ChatGPT.dart
+schematic.jpg
+
+# Temporary / Backup Files
+*~
+*.bak
+*.tmp
